@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Your Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lora:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    /* =========================================================
+       EDIT YOUR CONTENT — look for 🖊️ EDIT tags throughout
+       ========================================================= */
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #7c6dfa;
+      --accent2: #fa6d9a;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --card-bg: #13131e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ---- NOISE OVERLAY ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    /* =========================================================
+       NAV
+       ========================================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,109,250,0.12) 0%, transparent 70%);
+      top: 10%; left: -10%;
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(250,109,154,0.08) 0%, transparent 70%);
+      bottom: 10%; right: 0%;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; max-width: 800px; }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124,109,250,0.12);
+      border: 1px solid rgba(124,109,250,0.3);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-bio {
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-size: 0.92rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 3px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-socials {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      animation: fadeUp 0.6s 0.5s ease both;
+    }
+
+    .hero-socials a {
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-socials a:hover { color: var(--accent); }
+
+    /* =========================================================
+       STATS STRIP
+       ========================================================= */
+    .stats-strip {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      padding: 2rem 3.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       SECTION BASE
+       ========================================================= */
+    section {
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    /* 🖊️ EDIT: Replace 'YOUR_PHOTO.jpg' with your actual photo path or URL */
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: block;
+      background: var(--surface2);
+    }
+
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--surface2);
+      border: 2px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .about-photo-placeholder:hover { border-color: var(--accent); }
+    .about-photo-placeholder .icon { font-size: 2rem; }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.92rem;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    /* =========================================================
+       CARDS GRID
+       ========================================================= */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .card-img-wrap .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,15,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+    }
+
+    .card-img-wrap:hover .img-overlay { opacity: 1; }
+    .card-img-wrap .placeholder-icon { font-size: 2rem; }
+
+    .card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+
+    .card-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.82rem;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(124,109,250,0.1);
+      border: 1px solid rgba(124,109,250,0.2);
+      color: var(--accent);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .card-links a {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-links a:hover { color: var(--accent); }
+
+    /* =========================================================
+       ACHIEVEMENTS
+       ========================================================= */
+    .achievements-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .achievement-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .achievement-item:hover { border-color: var(--accent); }
+
+    .achievement-icon {
+      font-size: 2rem;
+      width: 3rem;
+      text-align: center;
+    }
+
+    .achievement-img-wrap {
+      width: 80px;
+      height: 80px;
+      background: var(--surface2);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-align: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .achievement-img-wrap:hover { border-color: var(--accent); }
+
+    .achievement-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .achievement-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .achievement-sub {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* =========================================================
+       PAPERS / PUBLICATIONS
+       ========================================================= */
+    .papers-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .paper-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color 0.2s;
+    }
+
+    .paper-item:hover { border-color: var(--accent2); }
+
+    .paper-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .paper-authors {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .paper-authors strong { color: var(--accent2); }
+
+    .paper-venue {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .paper-abstract {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .paper-img-wrap {
+      width: 120px;
+      height: 160px;
+      background: var(--surface2);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--muted);
+      cursor: pointer;
+      text-align: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .paper-img-wrap:hover { border-color: var(--accent); }
+    .paper-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* =========================================================
+       CONFERENCES
+       ========================================================= */
+    .conf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .conf-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .conf-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+
+    .conf-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.72rem;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .conf-img-wrap img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+    .conf-body { padding: 1.4rem; }
+
+    .conf-year {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.4rem;
+    }
+
+    .conf-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .conf-paper {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .conf-badge {
+      display: inline-block;
+      background: rgba(250,109,154,0.1);
+      border: 1px solid rgba(250,109,154,0.2);
+      color: var(--accent2);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* =========================================================
+       EXPERIENCE
+       ========================================================= */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .exp-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color 0.2s;
+    }
+
+    .exp-item:hover { border-color: var(--accent); }
+
+    .exp-logo {
+      width: 64px; height: 64px;
+      background: var(--surface2);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-align: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .exp-logo:hover { border-color: var(--accent); }
+    .exp-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-size: 0.82rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-duration {
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .exp-bullets {
+      margin-top: 0.8rem;
+      padding-left: 1.2rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .exp-bullets li { margin-bottom: 0.3rem; }
+
+    /* =========================================================
+       CERTIFICATIONS
+       ========================================================= */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.4rem;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1rem;
+      align-items: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .cert-logo {
+      width: 60px; height: 60px;
+      background: var(--surface2);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      color: var(--muted);
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .cert-logo:hover { border-color: var(--accent); }
+    .cert-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .cert-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-issuer { color: var(--accent); font-size: 0.75rem; margin-bottom: 0.2rem; }
+    .cert-year { color: var(--muted); font-size: 0.72rem; }
+
+    /* =========================================================
+       SKILLS
+       ========================================================= */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .skill-group-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
+    #contact { border-top: 1px solid var(--border); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.8rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      padding: 0.8rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 140px; }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* =========================================================
+       ANIMATIONS
+       ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .paper-item { grid-template-columns: 1fr; }
+      .paper-img-wrap { width: 100%; height: 180px; }
+      .exp-item { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .achievement-item { grid-template-columns: auto 1fr; }
+      .achievement-img-wrap { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .stat { padding: 1.5rem 2rem; }
+    }
+
+    /* =========================================================
+       IMAGE UPLOAD HELPER (JS-powered inline upload)
+       ========================================================= */
+    .upload-hint {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+       🖊️ EDIT: Update your name initials and nav links as needed
+       ============================================================ -->
+  <nav>
+    <div class="nav-logo">YN.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#conferences">Conferences</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       🖊️ EDIT: Your name, tagline, bio, and social links
+       ============================================================ -->
+  <section id="hero" style="max-width:100%; padding-left:4rem; padding-right:4rem;">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <div class="hero-tag">B.Tech AIML · 3rd Year · Class of 2026</div>
+      <h1 class="hero-name">Your<br/><span>Name</span> Here.</h1>
+      <p class="hero-tagline">AI/ML Researcher · Builder · Problem Solver</p>
+      <p class="hero-bio">
+        <!-- 🖊️ EDIT: Write your one-paragraph bio here -->
+        I'm a third-year B.Tech student specializing in Artificial Intelligence and Machine Learning at [Your College Name]. I'm passionate about building intelligent systems, publishing meaningful research, and solving real-world problems with AI.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <!-- 🖊️ EDIT: Replace # with your actual resume link -->
+        <a href="#" class="btn btn-outline">Download Resume</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-socials">
+        <!-- 🖊️ EDIT: Replace # with your actual profile links -->
+        <a href="#">⌥ GitHub</a>
+        <a href="#">in LinkedIn</a>
+        <a href="#">◎ Google Scholar</a>
+        <a href="#">✉ Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS STRIP
+       🖊️ EDIT: Update your numbers
+       ============================================================ -->
+  <div class="stats-strip" style="padding-left:2rem; padding-right:2rem;">
+    <div class="stat">
+      <span class="stat-num">0</span><!-- 🖊️ EDIT -->
+      <span class="stat-label">Projects</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0</span><!-- 🖊️ EDIT -->
+      <span class="stat-label">Papers</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0</span><!-- 🖊️ EDIT -->
+      <span class="stat-label">Conferences</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0.0</span><!-- 🖊️ EDIT -->
+      <span class="stat-label">CGPA</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0</span><!-- 🖊️ EDIT -->
+      <span class="stat-label">Certifications</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ABOUT
+       🖊️ EDIT: Your bio and photo
+       ============================================================ -->
+  <section id="about">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <!-- 🖊️ EDIT: Click below to upload your photo, OR replace the placeholder div
+             with: <img src="your_photo.jpg" class="about-photo" alt="Your Name"/> -->
+        <div class="about-photo-placeholder" onclick="triggerUpload(this, 'about-photo-img')">
+          <div class="icon">📷</div>
+          <span>Click to upload<br/>your photo</span>
+          <span class="upload-hint">JPG / PNG / WEBP</span>
+          <img id="about-photo-img" src="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:4px;"/>
+        </div>
+      </div>
+      <div class="about-text">
+        <!-- 🖊️ EDIT: Write your story across these paragraphs -->
+        <p>Hello! I'm <strong>Your Name</strong>, a B.Tech student in AI & Machine Learning at <strong>[Your College]</strong>. I'm in my 3rd year and expected to graduate in <strong>[Year]</strong>.</p>
+        <p>My academic journey has been driven by curiosity — from building my first ML model to co-authoring research papers, I love the intersection of theory and application. I have a particular interest in <strong>[Your Research Area, e.g., NLP / Computer Vision / Reinforcement Learning]</strong>.</p>
+        <p>Outside of academics, I enjoy <strong>[hobbies / interests]</strong>. I'm always open to research collaborations, internship opportunities, and interesting conversations.</p>
+        <p style="margin-top:1.5rem;">
+          <strong>Currently:</strong> Open to research internships and collaborations.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="#" class="btn btn-primary" style="font-size:0.75rem; padding:0.6rem 1.4rem;">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACHIEVEMENTS
+       🖊️ EDIT: Replace each achievement item with your own
+       To add more: copy an <div class="achievement-item"> block
+       ============================================================ -->
+  <section id="achievements">
+    <div class="section-label">02 — Achievements</div>
+    <h2 class="section-title">Academic Highlights</h2>
+
+    <div class="achievements-list">
+
+      <!-- Achievement 1 -->
+      <div class="achievement-item">
+        <div class="achievement-icon">🏆</div>
+        <div>
+          <div class="achievement-title">Achievement Title Here</div><!-- 🖊️ EDIT -->
+          <div class="achievement-sub">[Issuing Organization] · [Year]</div><!-- 🖊️ EDIT -->
+        </div>
+        <div class="achievement-img-wrap" onclick="triggerUpload(this, null)">
+          <span>📷 Add<br/>Image</span>
+        </div>
+      </div>
+
+      <!-- Achievement 2 -->
+      <div class="achievement-item">
+        <div class="achievement-icon">🥇</div>
+        <div>
+          <div class="achievement-title">Achievement Title Here</div><!-- 🖊️ EDIT -->
+          <div class="achievement-sub">[Issuing Organization] · [Year]</div><!-- 🖊️ EDIT -->
+        </div>
+        <div class="achievement-img-wrap" onclick="triggerUpload(this, null)">
+          <span>📷 Add<br/>Image</span>
+        </div>
+      </div>
+
+      <!-- Achievement 3 -->
+      <div class="achievement-item">
+        <div class="achievement-icon">🎖️</div>
+        <div>
+          <div class="achievement-title">Achievement Title Here</div><!-- 🖊️ EDIT -->
+          <div class="achievement-sub">[Issuing Organization] · [Year]</div><!-- 🖊️ EDIT -->
+        </div>
+        <div class="achievement-img-wrap" onclick="triggerUpload(this, null)">
+          <span>📷 Add<br/>Image</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+       🖊️ EDIT: Fill in each project card. Duplicate cards as needed.
+       ============================================================ -->
+  <section id="projects">
+    <div class="section-label">03 — Projects</div>
+    <h2 class="section-title">What I've Built</h2>
+
+    <div class="cards-grid">
+
+      <!-- Project Card 1 -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="triggerUpload(this, null)">
+          <div class="placeholder-icon">🖼️</div>
+          <span style="font-size:0.68rem;letter-spacing:0.1em;">Click to add image</span>
+          <div class="img-overlay">Change Image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">ML / Deep Learning</div><!-- 🖊️ EDIT -->
+          <div class="card-title">Project Title Here</div><!-- 🖊️ EDIT -->
+          <div class="card-desc">Short description of what this project does, the problem it solves, and the results it achieved. Keep it 2–3 lines.</div><!-- 🖊️ EDIT -->
+          <div class="card-tags">
+            <span class="tag">Python</span><!-- 🖊️ EDIT tech stack -->
+            <span class="tag">PyTorch</span>
+            <span class="tag">FastAPI</span>
+          </div>
+          <div class="card-links">
+            <a href="#">↗ GitHub</a><!-- 🖊️ EDIT -->
+            <a href="#">↗ Demo</a><!-- 🖊️ EDIT -->
+            <a href="#">↗ Paper</a><!-- 🖊️ EDIT (remove if no paper) -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="triggerUpload(this, null)">
+          <div class="placeholder-icon">🖼️</div>
+          <span style="font-size:0.68rem;letter-spacing:0.1em;">Click to add image</span>
+          <div class="img-overlay">Change Image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">NLP</div><!-- 🖊️ EDIT -->
+          <div class="card-title">Project Title Here</div><!-- 🖊️ EDIT -->
+          <div class="card-desc">Short description of what this project does, the problem it solves, and the results it achieved.</div><!-- 🖊️ EDIT -->
+          <div class="card-tags">
+            <span class="tag">Python</span><!-- 🖊️ EDIT -->
+            <span class="tag">HuggingFace</span>
+            <span class="tag">Transformers</span>
+          </div>
+          <div class="card-links">
+            <a href="#">↗ GitHub</a>
+            <a href="#">↗ Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="card">
+        <div class="card-img-wrap" onclick="triggerUpload(this, null)">
+          <div class="placeholder-icon">🖼️</div>
+          <span style="font-size:0.68rem;letter-spacing:0.1em;">Click to add image</span>
+          <div class="img-overlay">Change Image</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Computer Vision</div><!-- 🖊️ EDIT -->
+          <div class="card-title">Project Title Here</div><!-- 🖊️ EDIT -->
+          <div class="card-desc">Short description of what this project does, the problem it solves, and the results it achieved.</div><!-- 🖊️ EDIT -->
+          <div class="card-tags">
+            <span class="tag">OpenCV</span><!-- 🖊️ EDIT -->
+            <span class="tag">TensorFlow</span>
+            <span class="tag">YOLO</span>
+          </div>
+          <div class="card-links">
+            <a href="#">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAPERS & PUBLICATIONS
+       🖊️ EDIT: Fill in your paper details. Duplicate as needed.
+       ============================================================ -->
+  <section id="papers">
+    <div class="section-label">04 — Research</div>
+    <h2 class="section-title">Papers & Publications</h2>
+
+    <div class="papers-list">
+
+      <!-- Paper 1 -->
+      <div class="paper-item">
+        <div>
+          <div class="paper-title">Full Paper Title Goes Here</div><!-- 🖊️ EDIT -->
+          <div class="paper-authors">Author One, <strong>Your Name</strong>, Author Three</div><!-- 🖊️ EDIT -->
+          <div class="paper-venue">Journal / Conference Name · Year</div><!-- 🖊️ EDIT -->
+          <div class="card-tags" style="margin-bottom:0.8rem;">
+            <span class="tag">NLP</span><!-- 🖊️ EDIT -->
+            <span class="tag">Transformers</span>
+          </div>
+          <div class="paper-abstract">Brief abstract of the paper goes here — 2–3 sentences explaining the problem, approach, and key result.</div><!-- 🖊️ EDIT -->
+          <div class="card-links" style="margin-top:1rem;">
+            <a href="#">↗ PDF</a><!-- 🖊️ EDIT -->
+            <a href="#">↗ arXiv</a><!-- 🖊️ EDIT -->
+            <a href="#">↗ DOI</a><!-- 🖊️ EDIT -->
+            <a href="#">↗ Scholar</a><!-- 🖊️ EDIT -->
+          </div>
+        </div>
+        <div class="paper-img-wrap" onclick="triggerUpload(this, null)">
+          <span>📄 Add<br/>Cover /<br/>Figure</span>
+        </div>
+      </div>
+
+      <!-- Paper 2 -->
+      <div class="paper-item">
+        <div>
+          <div class="paper-title">Full Paper Title Goes Here</div><!-- 🖊️ EDIT -->
+          <div class="paper-authors">Author One, <strong>Your Name</strong>, Author Three</div><!-- 🖊️ EDIT -->
+          <div class="paper-venue">Journal / Conference Name · Year</div><!-- 🖊️ EDIT -->
+          <div class="card-tags" style="margin-bottom:0.8rem;">
+            <span class="tag">Computer Vision</span><!-- 🖊️ EDIT -->
+          </div>
+          <div class="paper-abstract">Brief abstract of the paper goes here — 2–3 sentences explaining the problem, approach, and key result.</div><!-- 🖊️ EDIT -->
+          <div class="card-links" style="margin-top:1rem;">
+            <a href="#">↗ PDF</a>
+            <a href="#">↗ arXiv</a>
+          </div>
+        </div>
+        <div class="paper-img-wrap" onclick="triggerUpload(this, null)">
+          <span>📄 Add<br/>Cover /<br/>Figure</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONFERENCES
+       🖊️ EDIT: Fill in conference details. Duplicate cards as needed.
+       ============================================================ -->
+  <section id="conferences">
+    <div class="section-label">05 — Conferences</div>
+    <h2 class="section-title">Talks & Presentations</h2>
+
+    <div class="conf-grid">
+
+      <!-- Conference 1 -->
+      <div class="conf-card">
+        <div class="conf-img-wrap" onclick="triggerUpload(this, null)">
+          <div style="font-size:2rem;">🎤</div>
+          <span style="font-size:0.68rem;letter-spacing:0.1em;margin-top:0.3rem;">Click to add photo</span>
+        </div>
+        <div class="conf-body">
+          <div class="conf-year">[Year] · [City, Country]</div><!-- 🖊️ EDIT -->
+          <div class="conf-name">Conference Name</div><!-- 🖊️ EDIT -->
+          <div class="conf-paper">Paper / Poster Title Presented</div><!-- 🖊️ EDIT -->
+          <span class="conf-badge">Oral Presentation</span><!-- 🖊️ EDIT: Oral / Poster -->
+        </div>
+      </div>
+
+      <!-- Conference 2 -->
+      <div class="conf-card">
+        <div class="conf-img-wrap" onclick="triggerUpload(this, null)">
+          <div style="font-size:2rem;">🎤</div>
+          <span style="font-size:0.68rem;letter-spacing:0.1em;margin-top:0.3rem;">Click to add photo</span>
+        </div>
+        <div class="conf-body">
+          <div class="conf-year">[Year] · [City, Country]</div><!-- 🖊️ EDIT -->
+          <div class="conf-name">Conference Name</div><!-- 🖊️ EDIT -->
+          <div class="conf-paper">Paper / Poster Title Presented</div><!-- 🖊️ EDIT -->
+          <span class="conf-badge">Poster Presentation</span><!-- 🖊️ EDIT -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE
+       🖊️ EDIT: Internships, research positions, etc.
+       ============================================================ -->
+  <section id="experience">
+    <div class="section-label">06 — Experience</div>
+    <h2 class="section-title">Internships & Roles</h2>
+
+    <div class="exp-list">
+
+      <!-- Experience 1 -->
+      <div class="exp-item">
+        <div class="exp-logo" onclick="triggerUpload(this, null)">
+          <span style="text-align:center;font-size:0.6rem;">Add<br/>Logo</span>
+        </div>
+        <div>
+          <div class="exp-role">Role / Position Title</div><!-- 🖊️ EDIT -->
+          <div class="exp-company">Company / Research Lab Name</div><!-- 🖊️ EDIT -->
+          <div class="exp-duration">Month Year – Month Year · [Full-time / Intern / Remote]</div><!-- 🖊️ EDIT -->
+          <ul class="exp-bullets">
+            <li>What you built or researched — be specific about impact.</li><!-- 🖊️ EDIT -->
+            <li>Tech stack or tools used in the role.</li><!-- 🖊️ EDIT -->
+            <li>Any notable achievement or metric from this role.</li><!-- 🖊️ EDIT -->
+          </ul>
+          <div class="card-tags" style="margin-top:0.8rem;">
+            <span class="tag">Python</span><!-- 🖊️ EDIT -->
+            <span class="tag">TensorFlow</span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+
+      <!-- Experience 2 -->
+      <div class="exp-item">
+        <div class="exp-logo" onclick="triggerUpload(this, null)">
+          <span style="text-align:center;font-size:0.6rem;">Add<br/>Logo</span>
+        </div>
+        <div>
+          <div class="exp-role">Role / Position Title</div><!-- 🖊️ EDIT -->
+          <div class="exp-company">Company / Research Lab Name</div><!-- 🖊️ EDIT -->
+          <div class="exp-duration">Month Year – Month Year</div><!-- 🖊️ EDIT -->
+          <ul class="exp-bullets">
+            <li>What you worked on and why it mattered.</li><!-- 🖊️ EDIT -->
+            <li>Tools or technologies used.</li><!-- 🖊️ EDIT -->
+          </ul>
+          <div class="card-tags" style="margin-top:0.8rem;">
+            <span class="tag">PyTorch</span><!-- 🖊️ EDIT -->
+          </div>
+        </div>
+        <div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CERTIFICATIONS
+       🖊️ EDIT: Your certificates. Duplicate as needed.
+       ============================================================ -->
+  <section id="certifications">
+    <div class="section-label">07 — Certifications</div>
+    <h2 class="section-title">Courses & Certificates</h2>
+
+    <div class="certs-grid">
+
+      <!-- Cert 1 -->
+      <div class="cert-card">
+        <div class="cert-logo" onclick="triggerUpload(this, null)">
+          <span>Add<br/>Logo</span>
+        </div>
+        <div>
+          <div class="cert-name">Certification Name</div><!-- 🖊️ EDIT -->
+          <div class="cert-issuer">Coursera / NPTEL / Google / AWS</div><!-- 🖊️ EDIT -->
+          <div class="cert-year">Year · <a href="#" style="color:var(--accent);text-decoration:none;">View Credential ↗</a></div><!-- 🖊️ EDIT -->
+        </div>
+      </div>
+
+      <!-- Cert 2 -->
+      <div class="cert-card">
+        <div class="cert-logo" onclick="triggerUpload(this, null)">
+          <span>Add<br/>Logo</span>
+        </div>
+        <div>
+          <div class="cert-name">Certification Name</div><!-- 🖊️ EDIT -->
+          <div class="cert-issuer">Platform Name</div><!-- 🖊️ EDIT -->
+          <div class="cert-year">Year · <a href="#" style="color:var(--accent);text-decoration:none;">View Credential ↗</a></div><!-- 🖊️ EDIT -->
+        </div>
+      </div>
+
+      <!-- Cert 3 -->
+      <div class="cert-card">
+        <div class="cert-logo" onclick="triggerUpload(this, null)">
+          <span>Add<br/>Logo</span>
+        </div>
+        <div>
+          <div class="cert-name">Certification Name</div><!-- 🖊️ EDIT -->
+          <div class="cert-issuer">Platform Name</div><!-- 🖊️ EDIT -->
+          <div class="cert-year">Year</div><!-- 🖊️ EDIT -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+       🖊️ EDIT: Add / remove skills within each group
+       ============================================================ -->
+  <section id="skills">
+    <div class="section-label">08 — Skills</div>
+    <h2 class="section-title">Tools & Technologies</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-pills">
+          <!-- 🖊️ EDIT: Add/remove your languages -->
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">ML / DL Frameworks</div>
+        <div class="skill-pills">
+          <!-- 🖊️ EDIT -->
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">scikit-learn</span>
+          <span class="skill-pill">HuggingFace</span>
+          <span class="skill-pill">Keras</span>
+          <span class="skill-pill">JAX</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Tools & Platforms</div>
+        <div class="skill-pills">
+          <!-- 🖊️ EDIT -->
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Jupyter</span>
+          <span class="skill-pill">VS Code</span>
+          <span class="skill-pill">Linux</span>
+          <span class="skill-pill">GCP</span>
+          <span class="skill-pill">AWS</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Research Domains</div>
+        <div class="skill-pills">
+          <!-- 🖊️ EDIT -->
+          <span class="skill-pill">NLP</span>
+          <span class="skill-pill">Computer Vision</span>
+          <span class="skill-pill">Reinforcement Learning</span>
+          <span class="skill-pill">Generative AI</span>
+          <span class="skill-pill">MLOps</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       🖊️ EDIT: Your contact info and links
+       ============================================================ -->
+  <section id="contact">
+    <div class="section-label">09 — Contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I'm always open to research collaborations, internship opportunities, and interesting conversations about AI and ML. Feel free to reach out!</p>
+
+        <div class="contact-links">
+          <!-- 🖊️ EDIT: Replace # and placeholder text with your actual links -->
+          <a href="mailto:your@email.com" class="contact-link">✉ your@email.com</a>
+          <a href="#" class="contact-link">⌥ github.com/yourhandle</a>
+          <a href="#" class="contact-link">in linkedin.com/in/yourhandle</a>
+          <a href="#" class="contact-link">◎ Google Scholar Profile</a>
+          <a href="#" class="contact-link">📄 Download Resume</a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="Jane Doe" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Hi, I'd love to collaborate on..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:fit-content;">Send Message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       🖊️ EDIT: Your name and year
+       ============================================================ -->
+  <footer>
+    <span>© 2025 Your Name · Built with ♥</span><!-- 🖊️ EDIT -->
+    <span style="color:var(--accent);">B.Tech AIML · [Your College]</span><!-- 🖊️ EDIT -->
+  </footer>
+
+  <!-- ============================================================
+       HIDDEN FILE INPUT for image uploads
+       ============================================================ -->
+  <input type="file" id="global-file-input" accept="image/*" style="display:none;"/>
+
+  <script>
+    // ============================================================
+    // IMAGE UPLOAD SYSTEM
+    // Clicking any placeholder triggers a local file picker
+    // and swaps the placeholder with your chosen image.
+    // ============================================================
+    let currentTarget = null;
+    let currentImgId = null;
+
+    function triggerUpload(el, imgId) {
+      currentTarget = el;
+      currentImgId = imgId;
+      document.getElementById('global-file-input').click();
+    }
+
+    document.getElementById('global-file-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file || !currentTarget) return;
+
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const url = ev.target.result;
+
+        // If a specific <img> id was given (About photo)
+        if (currentImgId) {
+          const img = document.getElementById(currentImgId);
+          if (img) {
+            img.src = url;
+            img.style.display = 'block';
+            // Hide placeholder text children
+            Array.from(currentTarget.children).forEach(c => {
+              if (c !== img) c.style.display = 'none';
+            });
+            currentTarget.style.border = 'none';
+          }
+        } else {
+          // Generic: inject an <img> into the placeholder
+          let img = currentTarget.querySelector('img');
+          if (!img) {
+            img = document.createElement('img');
+            currentTarget.appendChild(img);
+          }
+          img.src = url;
+          img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;';
+
+          // Hide placeholder text
+          Array.from(currentTarget.children).forEach(c => {
+            if (c.tagName !== 'IMG' && !c.classList.contains('img-overlay')) {
+              c.style.display = 'none';
+            }
+          });
+          currentTarget.style.border = '1px solid var(--border)';
+        }
+      };
+      reader.readAsDataURL(file);
+      this.value = ''; // reset so same file can be re-selected
+    });
+
+    // ============================================================
+    // CONTACT FORM (basic — wire up to a backend or Formspree)
+    // 🖊️ EDIT: Replace with your Formspree or backend endpoint
+    // ============================================================
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert('Thanks! (Wire this form up to Formspree or your backend to make it functional.)');
+    }
+
+    // ============================================================
+    // SMOOTH SCROLL OFFSET for fixed nav
+    // ============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
