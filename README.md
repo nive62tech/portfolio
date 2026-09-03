@@ -336,5 +336,6 @@ Open `style.css` and edit the CSS variables at the top:
 
 **Niveditha S Nair**  
 📧 nivtecho@gmail.com  
+nivedithasathishnair@gmail.com
 💼 [linkedin.com/in/niveditha-s-nair](https://linkedin.com/in/niveditha-s-nair)  
 🐙 [github.com/nive62tech](https://github.com/nive62tech)
