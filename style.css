@@ -607,3 +607,52 @@ footer p { font-size:.78rem; color:var(--xs); margin-bottom:.9rem; }
 @media(max-width:768px){
   .exp-cards-grid { grid-template-columns:1fr; }
 }
+
+/* GITHUB SECTION */
+.github-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem;align-items:start;}
+.gh-graph-wrap,.gh-status-wrap{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rl);padding:1.6rem;display:flex;flex-direction:column;gap:1.2rem;}
+.gh-graph-header{display:flex;align-items:center;justify-content:space-between;}
+.gh-label{font-family:var(--fm);font-size:.6rem;color:var(--dim);letter-spacing:.25em;text-transform:uppercase;}
+.gh-username{font-family:var(--fm);font-size:.62rem;color:var(--xs);}
+.gh-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:.6rem;color:var(--dim);letter-spacing:.18em;}
+.gh-live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pdot 2s ease infinite;box-shadow:0 0 6px #22c55e;}
+.gh-chart-box{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:10px;padding:1rem;overflow:hidden;}
+.gh-chart-img{width:100%;height:auto;display:block;filter:invert(1) hue-rotate(90deg) brightness(0.7) saturate(0.7);border-radius:4px;}
+.gh-chart-err{font-family:var(--fm);font-size:.68rem;color:var(--xs);text-align:center;padding:2rem 0;}
+.gh-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;}
+.gh-stat{background:var(--bg);border:1px solid var(--border2);border-radius:10px;padding:.8rem .6rem;text-align:center;transition:border-color .3s;}
+.gh-stat:hover{border-color:var(--border);}
+.gh-stat-n{display:block;font-family:var(--fh);font-size:1.4rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:4px;}
+.gh-stat-l{font-family:var(--fm);font-size:.55rem;color:var(--xs);letter-spacing:.12em;text-transform:uppercase;}
+.gh-view-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.7rem;color:var(--dim);border:1px solid var(--border2);padding:8px 16px;border-radius:99px;transition:all .3s;width:fit-content;letter-spacing:.06em;}
+.gh-view-btn:hover{border-color:var(--border);color:var(--white);}
+.status-list{display:flex;flex-direction:column;gap:.5rem;}
+.status-item{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;border-radius:8px;background:var(--bg);border:1px solid var(--border2);transition:border-color .3s;}
+.status-item:hover{border-color:var(--border);}
+.status-left{display:flex;align-items:center;gap:.6rem;}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.status-dot.active{background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pdot 2s ease infinite;}
+.status-dot.building{background:#f59e0b;box-shadow:0 0 6px #f59e0b;animation:pdot 2.5s ease infinite;}
+.status-dot.complete{background:var(--dim);}
+.status-name{font-family:var(--fm);font-size:.72rem;color:var(--muted);}
+.status-badge{font-family:var(--fm);font-size:.58rem;font-weight:600;padding:2px 9px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase;}
+.s-active{background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.22);color:#22c55e;}
+.s-building{background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.22);color:#f59e0b;}
+.s-complete{background:rgba(255,255,255,.05);border:1px solid var(--border2);color:var(--dim);}
+.gh-profile-card{display:flex;align-items:center;gap:1rem;background:var(--bg);border:1px solid var(--border2);border-radius:12px;padding:1rem;margin-top:.4rem;}
+.gh-avatar-wrap{position:relative;flex-shrink:0;}
+.gh-avatar{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--border2);display:block;}
+.gh-online-dot{position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;background:#22c55e;border:2px solid var(--bg);}
+.gh-profile-name{font-family:var(--fh);font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:2px;}
+.gh-profile-bio{font-family:var(--fm);font-size:.65rem;color:var(--muted);margin-bottom:2px;}
+.gh-profile-join{font-family:var(--fm);font-size:.6rem;color:var(--xs);}
+
+/* PROJECT STATUS BADGES */
+.pcard-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.65rem;}
+.pcard-top-row .pcard-tags{margin-bottom:0;}
+.proj-status{font-family:var(--fm);font-size:.58rem;font-weight:600;white-space:nowrap;padding:2px 9px;border-radius:99px;letter-spacing:.05em;flex-shrink:0;}
+.ps-active{background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.22);color:#22c55e;}
+.ps-building{background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.22);color:#f59e0b;}
+.ps-complete{background:rgba(255,255,255,.05);border:1px solid var(--border2);color:var(--dim);}
+
+@media(max-width:900px){.github-grid{grid-template-columns:1fr;}.gh-stats-row{grid-template-columns:repeat(2,1fr);}}

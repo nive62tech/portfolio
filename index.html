@@ -103,6 +103,61 @@
   </div>
 </section>
 
+
+<!-- ═══ GITHUB ═══ -->
+<section id="github" class="section section-dark">
+  <div class="container">
+    <div class="section-label reveal">GitHub</div>
+    <h2 class="section-title reveal">Activity &amp; <em>Stats</em></h2>
+    <div class="github-grid reveal">
+      <div class="gh-graph-wrap">
+        <div class="gh-graph-header">
+          <span class="gh-label">CONTRIBUTION ACTIVITY</span>
+          <span class="gh-username">@nive62tech</span>
+        </div>
+        <div class="gh-chart-box">
+          <img src="https://ghchart.ssh.surf/nive62tech" alt="GitHub contribution chart" class="gh-chart-img" onerror="this.parentElement.innerHTML='<div class=gh-chart-err>Chart unavailable — visit github.com/nive62tech</div>'">
+        </div>
+        <div class="gh-stats-row">
+          <div class="gh-stat"><span class="gh-stat-n" id="ghRepos">—</span><span class="gh-stat-l">Public Repos</span></div>
+          <div class="gh-stat"><span class="gh-stat-n" id="ghFollowers">—</span><span class="gh-stat-l">Followers</span></div>
+          <div class="gh-stat"><span class="gh-stat-n" id="ghFollowing">—</span><span class="gh-stat-l">Following</span></div>
+          <div class="gh-stat"><span class="gh-stat-n" id="ghGists">—</span><span class="gh-stat-l">Gists</span></div>
+        </div>
+        <a href="https://github.com/nive62tech" target="_blank" class="gh-view-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View Full Profile on GitHub
+        </a>
+      </div>
+      <div class="gh-status-wrap">
+        <div class="gh-graph-header">
+          <span class="gh-label">SYSTEM STATUS</span>
+          <span class="gh-live"><span class="gh-live-dot"></span>LIVE</span>
+        </div>
+        <div class="status-list">
+          <div class="status-item"><div class="status-left"><span class="status-dot active"></span><span class="status-name">Vizora</span></div><span class="status-badge s-active">Active</span></div>
+          <div class="status-item"><div class="status-left"><span class="status-dot active"></span><span class="status-name">PromptLens</span></div><span class="status-badge s-active">Active</span></div>
+          <div class="status-item"><div class="status-left"><span class="status-dot building"></span><span class="status-name">Neuro_Note</span></div><span class="status-badge s-building">Building</span></div>
+          <div class="status-item"><div class="status-left"><span class="status-dot complete"></span><span class="status-name">AI Air Writer</span></div><span class="status-badge s-complete">Complete</span></div>
+          <div class="status-item"><div class="status-left"><span class="status-dot active"></span><span class="status-name">ProjectPilot</span></div><span class="status-badge s-active">Active</span></div>
+          <div class="status-item"><div class="status-left"><span class="status-dot building"></span><span class="status-name">Emoji Translator</span></div><span class="status-badge s-building">Building</span></div>
+        </div>
+        <div class="gh-profile-card">
+          <div class="gh-avatar-wrap">
+            <img id="ghAvatar" src="https://github.com/nive62tech.png" alt="Avatar" class="gh-avatar" onerror="this.src='images/profile.jpg'">
+            <span class="gh-online-dot"></span>
+          </div>
+          <div class="gh-profile-info">
+            <div class="gh-profile-name" id="ghName">nive62tech</div>
+            <div class="gh-profile-bio" id="ghBio">AI/ML Engineer · Kerala, India</div>
+            <div class="gh-profile-join" id="ghJoined"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects" class="section section-dark">
   <div class="container">
@@ -121,27 +176,27 @@
     <div class="proj-grid" id="projGrid">
       <div class="pcard featured-card" data-category="ai-ml tools open-source" onclick="openModal('project','vizora')">
         <div class="pcard-img"><img src="images/vizora.jpg" alt="Vizora" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>React</span><span>FastAPI</span><span>Ollama</span><span>MIT</span></div><h3>Vizora</h3><p>Fully local, privacy-first AI data visualization. Chat with your CSV in plain English. Zero cloud. LAN mode for teams.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>React</span><span>FastAPI</span><span>Ollama</span><span>MIT</span></div><span class="proj-status ps-active">● ACTIVE</span></div><h3>Vizora</h3><p>Fully local, privacy-first AI data visualization. Chat with your CSV in plain English. Zero cloud. LAN mode for teams.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
       <div class="pcard" data-category="ai-ml tools" onclick="openModal('project','promptlens')">
         <div class="pcard-img"><img src="images/promptlens.jpg" alt="" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>FastAPI</span><span>Gemini</span></div><h3>PromptLens</h3><p>Local-first LLM prompt evaluation. Compare models side-by-side with readability and sentiment scoring.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>FastAPI</span><span>Gemini</span></div><span class="proj-status ps-active">● ACTIVE</span></div><h3>PromptLens</h3><p>Local-first LLM prompt evaluation. Compare models side-by-side with readability and sentiment scoring.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
       <div class="pcard" data-category="ai-ml mobile" onclick="openModal('project','neuronote')">
         <div class="pcard-img"><img src="images/neuronote.jpg" alt="" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>Flutter</span><span>Groq AI</span></div><h3>Neuro_Note</h3><p>Voice-first AI task and calendar app. Speak naturally — AI extracts tasks and sets smart reminders.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>Flutter</span><span>Groq AI</span></div><span class="proj-status ps-building">● BUILDING</span></div><h3>Neuro_Note</h3><p>Voice-first AI task and calendar app. Speak naturally — AI extracts tasks and sets smart reminders.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
       <div class="pcard" data-category="computer-vision ai-ml" onclick="openModal('project','airwriter')">
         <div class="pcard-img"><img src="images/airwriter.jpg" alt="" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>OpenCV</span><span>MediaPipe</span></div><h3>AI Air Writer</h3><p>Real-time gesture drawing using only a webcam. 21 hand landmarks. Built in 2–3 hours.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>OpenCV</span><span>MediaPipe</span></div><span class="proj-status ps-complete">● COMPLETE</span></div><h3>AI Air Writer</h3><p>Real-time gesture drawing using only a webcam. 21 hand landmarks. Built in 2–3 hours.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
       <div class="pcard" data-category="open-source tools" onclick="openModal('project','projectpilot')">
         <div class="pcard-img"><img src="images/projectpilot.jpg" alt="" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>Open Source</span><span>AI Q&amp;A</span></div><h3>ProjectPilot</h3><p>AI step-by-step project mentor for engineering students. Roadmaps, debugging, deployment guidance.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>Open Source</span><span>AI Q&amp;A</span></div><span class="proj-status ps-active">● ACTIVE</span></div><h3>ProjectPilot</h3><p>AI step-by-step project mentor for engineering students. Roadmaps, debugging, deployment guidance.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
       <div class="pcard" data-category="nlp mobile" onclick="openModal('project','emojitranslator')">
         <div class="pcard-img"><img src="images/emojitranslator.jpg" alt="" onerror="this.style.display='none'"><div class="pcard-img-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 13s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div></div>
-        <div class="pcard-body"><div class="pcard-tags"><span>NLP</span><span>Flutter</span></div><h3>Emoji Translator</h3><p>Context-aware text ↔ emoji using NLP. Sentiment-aware, multi-language support planned.</p><div class="pcard-hint">Click to explore →</div></div>
+        <div class="pcard-body"><div class="pcard-top-row"><div class="pcard-tags"><span>NLP</span><span>Flutter</span></div><span class="proj-status ps-building">● BUILDING</span></div><h3>Emoji Translator</h3><p>Context-aware text ↔ emoji using NLP. Sentiment-aware, multi-language support planned.</p><div class="pcard-hint">Click to explore →</div></div>
       </div>
     </div>
     <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
@@ -734,6 +789,21 @@ document.getElementById('cform').addEventListener('submit',e=>{
 
 /* Init */
 document.addEventListener('DOMContentLoaded',()=>{ if(getAllCards().length>CARDS_PER_PAGE)renderCards(); initResearch(); });
+
+(function(){
+  fetch('https://api.github.com/users/nive62tech')
+    .then(r=>r.json()).then(d=>{
+      const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+      s('ghRepos',d.public_repos??'—');
+      s('ghFollowers',d.followers??'—');
+      s('ghFollowing',d.following??'—');
+      s('ghGists',d.public_gists??'—');
+      s('ghName',d.name||d.login||'nive62tech');
+      s('ghBio',d.bio||'AI/ML Engineer · Kerala, India');
+      if(d.created_at)s('ghJoined','Member since '+new Date(d.created_at).getFullYear());
+      if(d.avatar_url){const a=document.getElementById('ghAvatar');if(a)a.src=d.avatar_url;}
+    }).catch(()=>{});
+})();
 </script>
 </body>
 </html>
