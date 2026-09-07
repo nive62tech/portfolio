@@ -116,7 +116,20 @@
           <span class="gh-username">@nive62tech</span>
         </div>
         <div class="gh-chart-box">
-          <img src="https://ghchart.ssh.surf/nive62tech" alt="GitHub contribution chart" class="gh-chart-img" onerror="this.parentElement.innerHTML='<div class=gh-chart-err>Chart unavailable — visit github.com/nive62tech</div>'">
+          <img
+            id="gh-chart"
+            src="https://github-readme-activity-graph.vercel.app/graph?username=nive62tech&theme=minimal&hide_border=true&bg_color=000000&color=666666&line=ffffff&point=ffffff&area=true&area_color=222222&radius=4"
+            alt="GitHub contribution chart"
+            class="gh-chart-img"
+            style="filter:none;border-radius:6px;"
+            onerror="
+              this.src='https://github-readme-stats.vercel.app/api?username=nive62tech&show_icons=true&hide_border=true&bg_color=000000&title_color=ffffff&text_color=888888&icon_color=ffffff&count_private=true';
+              this.style.filter='none';
+              this.onerror=function(){
+                this.parentElement.innerHTML='<div class=gh-chart-err>Visit <a href=https://github.com/nive62tech target=_blank style=color:#fff>github.com/nive62tech</a> to see contributions</div>';
+              };
+            "
+          >
         </div>
         <div class="gh-stats-row">
           <div class="gh-stat"><span class="gh-stat-n" id="ghRepos">—</span><span class="gh-stat-l">Public Repos</span></div>
